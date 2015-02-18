@@ -1,6 +1,8 @@
 var React = require('react');
 var Router = require('react-router');
 var { Route, RouteHandler, Link } = Router;
+var { Nav, Navbar } = require('react-bootstrap');
+var { NavItemLink } = require('react-router-bootstrap');
 
 var App = React.createClass({
   mixins: [ Router.State ],
@@ -8,13 +10,13 @@ var App = React.createClass({
     var name = this.getRoutes().reverse()[0].name;
     return (
       <div>
-        <nav className="navbar navbar-default navbar-fixed-top">
-          <a className="navbar-brand" href="#/">Home</a>
-          <ul className="nav navbar-nav">
-            <li><Link to="hello">Hello</Link></li>
-            <li><Link to="hi" params={{name: 'alex'}}>Hi</Link></li>
-          </ul>
-        </nav>
+        <Navbar className="navbar-fixed-top" fluid>
+          <Nav>
+            <a href="#/" className="navbar-brand">Home</a>
+            <NavItemLink to="hello">Hello</NavItemLink>
+            <NavItemLink to="hi" params={{name:'alex'}}>Hello</NavItemLink>
+          </Nav>
+        </Navbar>
         <div className="container">
           <RouteHandler key={name}/>
         </div>
